@@ -1,0 +1,14 @@
+node_modules
+dist
+build
+.vite
+*.log
+.DS_Store
+
+# secrets
+.env
+.env.local
+
+# runtime data (created automatically on first run)
+server/data/db.json
+server/data/*.bak
