@@ -5,19 +5,22 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ImportJiraDialog } from "@/components/ImportJiraDialog";
-import type { Release } from "@release-tool/shared";
+import type { Release, Task } from "@release-tool/shared";
 
 export function ReleasesPage() {
   const [releases, setReleases] = useState<Release[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.releases
-      .list()
-      .then(setReleases)
+    Promise.all([api.releases.list(), api.tasks.list()])
+      .then(([r, t]) => {
+        setReleases(r);
+        setTasks(t);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -43,10 +46,19 @@ export function ReleasesPage() {
   }
 
   async function remove(id: string) {
-    if (!confirm("Smazat release?")) return;
+    const release = releases.find((r) => r.id === id);
+    const taskCount = tasks.filter((t) => t.releaseId === id).length;
+    const message =
+      taskCount > 0
+        ? `Smazat release „${release?.name}"?\n\n` +
+          `Bude smazán release i všech ${taskCount} přiřazených tasků. ` +
+          `Tato akce je nevratná.`
+        : `Smazat release „${release?.name}"?`;
+    if (!confirm(message)) return;
     try {
-      await api.releases.remove(id);
+      await api.releases.remove(id, taskCount > 0);
       setReleases((prev) => prev.filter((r) => r.id !== id));
+      setTasks((prev) => prev.filter((t) => t.releaseId !== id));
     } catch (err) {
       setError((err as Error).message);
     }

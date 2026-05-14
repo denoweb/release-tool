@@ -57,14 +57,14 @@ export function ServicesPage() {
   }
 
   return (
-    <div className="flex flex-col gap-4 max-w-5xl mx-auto">
+    <div className="flex flex-col gap-4">
       <Card>
         <CardHeader>
           <CardTitle className="text-base">Přidat službu</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={add} className="flex gap-2 items-end">
-            <div className="w-48 shrink-0 flex flex-col gap-1">
+            <div className="w-96 shrink-0 flex flex-col gap-1">
               <label className="text-xs text-muted-foreground">Název *</label>
               <Input
                 value={name}
@@ -112,7 +112,7 @@ export function ServicesPage() {
                       const v = e.target.value.trim();
                       if (v && v !== s.name) updateService(s.id, { name: v });
                     }}
-                    className="w-48 shrink-0"
+                    className="w-96 shrink-0"
                     placeholder="Název"
                   />
                   <Input

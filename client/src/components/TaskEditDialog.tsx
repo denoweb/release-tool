@@ -248,7 +248,16 @@ export function TaskEditDialog({
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogHeader onClose={handleClose}>
-        <h2 className="font-semibold">Úprava tasku</h2>
+        <h2 className="font-semibold">
+          Úprava tasku
+          {task && (
+            <span className="font-normal text-xs text-muted-foreground ml-2">
+              (vytvořeno{" "}
+              {new Date(task.createdAt).toLocaleString("cs-CZ")} · změněno{" "}
+              {new Date(task.updatedAt).toLocaleString("cs-CZ")})
+            </span>
+          )}
+        </h2>
       </DialogHeader>
 
       <DialogBody>
@@ -362,14 +371,13 @@ export function TaskEditDialog({
             </div>
 
             <div className="flex flex-col gap-2 mt-2">
-              <Label>Nasazení služeb</Label>
               {services.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
                   Žádné služby v číselníku.
                 </p>
               ) : (
                 <div className="border-2 border-border rounded-md overflow-hidden">
-                  <table className="w-full text-sm">
+                  <table className="w-full text-sm table-fixed">
                     <thead>
                       <tr className="border-b-2 border-border text-muted-foreground text-left">
                         <th className="px-4 py-2 font-medium">Služba</th>
@@ -394,10 +402,18 @@ export function TaskEditDialog({
                             key={service.id}
                             className="border-b border-border/40 last:border-0"
                           >
-                            <td className="px-4 py-2">
-                              <div className="font-medium">{service.name}</div>
+                            <td className="px-4 py-2 min-w-0">
+                              <div
+                                className="font-medium truncate"
+                                title={service.name}
+                              >
+                                {service.name}
+                              </div>
                               {service.repo && (
-                                <div className="text-xs text-muted-foreground truncate">
+                                <div
+                                  className="text-xs text-muted-foreground truncate"
+                                  title={service.repo}
+                                >
                                   {service.repo}
                                 </div>
                               )}
@@ -431,11 +447,6 @@ export function TaskEditDialog({
               )}
             </div>
 
-            <p className="text-xs text-muted-foreground text-right">
-              Vytvořeno{" "}
-              {new Date(task.createdAt).toLocaleString("cs-CZ")} · Změněno{" "}
-              {new Date(task.updatedAt).toLocaleString("cs-CZ")}
-            </p>
           </div>
         )}
       </DialogBody>

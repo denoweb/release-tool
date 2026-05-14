@@ -13,6 +13,7 @@ import {
   ExternalLink,
   Boxes,
   Copy,
+  Pencil,
 } from "lucide-react";
 import { api } from "@/api";
 import { Button } from "@/components/ui/button";
@@ -347,11 +348,13 @@ export function TaskListPage() {
                     <th className="px-5 py-2 font-medium w-20 text-center">
                       Služby
                     </th>
-                    <th className="px-5 py-2 font-medium w-20 text-center">
+                    <th className="px-2 py-2 font-medium w-14 text-center">
                       Script
                     </th>
-                    <th className="px-5 py-2 font-medium w-28">Stav</th>
-                    <th className="px-5 py-2 font-medium w-24"></th>
+                    <th className="px-5 py-2 font-medium w-[104px] text-center">
+                      Stav
+                    </th>
+                    <th className="px-1 py-2 font-medium w-12"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -394,14 +397,14 @@ export function TaskListPage() {
                             <span className="text-muted-foreground">—</span>
                           )}
                         </td>
-                        <td className="px-5 py-2 text-center">
+                        <td className="px-2 py-2 text-center">
                           {task.script.trim() ? (
                             <Check className="h-4 w-4 text-emerald-500 inline-block" />
                           ) : (
                             <span className="text-muted-foreground">—</span>
                           )}
                         </td>
-                        <td className="px-5 py-2">
+                        <td className="px-5 py-2 text-center">
                           <span
                             className={cn(
                               "inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-medium",
@@ -411,13 +414,15 @@ export function TaskListPage() {
                             {TASK_STATUS_LABELS[task.status]}
                           </span>
                         </td>
-                        <td className="px-5 py-2 text-right">
+                        <td className="px-1 py-2 text-center">
                           <Button
                             variant="default"
-                            size="sm"
+                            size="icon"
                             onClick={() => setEditingTaskId(task.id)}
+                            title="Detail"
+                            aria-label="Detail"
                           >
-                            Detail
+                            <Pencil className="h-4 w-4" />
                           </Button>
                         </td>
                       </tr>
@@ -448,7 +453,7 @@ export function TaskListPage() {
       <Dialog
         open={!!servicesTask}
         onClose={() => setServicesTask(null)}
-        className="max-w-md"
+        className="max-w-2xl"
       >
         {servicesTask && (
           <>
@@ -530,7 +535,7 @@ export function TaskListPage() {
       <Dialog
         open={overviewOpen}
         onClose={() => setOverviewOpen(false)}
-        className="max-w-md"
+        className="max-w-2xl"
       >
         <DialogHeader onClose={() => setOverviewOpen(false)}>
           <h2 className="font-semibold">Přehled služeb</h2>
@@ -541,7 +546,16 @@ export function TaskListPage() {
               Žádné služby v zobrazených tascích.
             </p>
           ) : (
-            <table className="w-full text-sm">
+            <>
+              <div className="flex justify-end mb-3">
+                <CopyAllServices
+                  services={servicesOverview.map((s) => ({
+                    name: s.name,
+                    repo: s.repo,
+                  }))}
+                />
+              </div>
+              <table className="w-full text-sm">
               <tbody>
                 {servicesOverview.map((s) => (
                   <tr
@@ -571,6 +585,7 @@ export function TaskListPage() {
                 ))}
               </tbody>
             </table>
+            </>
           )}
         </DialogBody>
       </Dialog>
@@ -589,6 +604,77 @@ export function TaskListPage() {
         }}
       />
     </div>
+  );
+}
+
+function escapeHtml(s: string) {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function CopyAllServices({
+  services,
+}: {
+  services: Array<{ name: string; repo?: string }>;
+}) {
+  const [copied, setCopied] = useState(false);
+
+  async function handleCopy() {
+    const tsv = services
+      .map((s) => `${s.name}\t${s.repo ?? ""}`)
+      .join("\n");
+    const html =
+      "<table><tbody>" +
+      services
+        .map((s) => {
+          const repoCell = s.repo
+            ? `<a href="${escapeHtml(s.repo)}">${escapeHtml(s.repo)}</a>`
+            : "";
+          return `<tr><td>${escapeHtml(s.name)}</td><td>${repoCell}</td></tr>`;
+        })
+        .join("") +
+      "</tbody></table>";
+
+    try {
+      if (typeof ClipboardItem !== "undefined" && navigator.clipboard.write) {
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            "text/plain": new Blob([tsv], { type: "text/plain" }),
+            "text/html": new Blob([html], { type: "text/html" }),
+          }),
+        ]);
+      } else {
+        await navigator.clipboard.writeText(tsv);
+      }
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      /* no-op */
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      className="inline-flex items-center gap-2 rounded-md border-2 border-border bg-card hover:bg-muted px-3 py-1.5 text-xs font-medium transition"
+      title="Zkopíruje všechny služby ve formátu pro vložení do tabulky (Confluence)"
+    >
+      {copied ? (
+        <>
+          <Check className="h-4 w-4 text-emerald-500" />
+          Zkopírováno
+        </>
+      ) : (
+        <>
+          <Copy className="h-4 w-4" />
+          Kopírovat vše
+        </>
+      )}
+    </button>
   );
 }
 

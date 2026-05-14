@@ -71,8 +71,11 @@ export const api = {
         method: "PATCH",
         body: JSON.stringify(body),
       }),
-    remove: (id: string) =>
-      request<void>(`/api/releases/${id}`, { method: "DELETE" }),
+    remove: (id: string, cascade = false) =>
+      request<{ deletedTasks: number }>(
+        `/api/releases/${id}${cascade ? "?cascade=true" : ""}`,
+        { method: "DELETE" },
+      ),
     importJira: (
       id: string,
       body: { jql?: string; fixVersion?: string },

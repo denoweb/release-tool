@@ -5,9 +5,10 @@ build
 *.log
 .DS_Store
 
-# secrets
+# secrets / local config
 .env
 .env.local
+.claude/settings.local.json
 
 # runtime data (created automatically on first run)
 server/data/db.json

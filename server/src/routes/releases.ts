@@ -143,14 +143,24 @@ releasesRouter.delete("/:id", async (req, res) => {
   const idx = db.data.releases.findIndex((r) => r.id === req.params.id);
   if (idx === -1) return res.status(404).json({ error: "Release nenalezen" });
 
-  const inUse = db.data.tasks.some((t) => t.releaseId === req.params.id);
-  if (inUse) {
-    return res
-      .status(409)
-      .json({ error: "Release má přiřazené tasky, nelze smazat" });
+  const cascade = req.query.cascade === "true";
+  const tasksOfRelease = db.data.tasks.filter(
+    (t) => t.releaseId === req.params.id,
+  );
+
+  if (tasksOfRelease.length > 0 && !cascade) {
+    return res.status(409).json({
+      error: "Release má přiřazené tasky, nelze smazat",
+      tasks: tasksOfRelease.length,
+    });
   }
 
+  if (cascade) {
+    db.data.tasks = db.data.tasks.filter(
+      (t) => t.releaseId !== req.params.id,
+    );
+  }
   db.data.releases.splice(idx, 1);
   await db.write();
-  res.status(204).end();
+  res.json({ deletedTasks: tasksOfRelease.length });
 });
