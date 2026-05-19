@@ -18,7 +18,7 @@ npm run dev
 ```
 
 - Frontend: http://localhost:5173
-- API:      http://localhost:3001/api
+- API:      http://localhost:3003/api
 
 Data jsou v `server/data/db.json`.
 

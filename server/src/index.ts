@@ -5,7 +5,7 @@ import { servicesRouter } from "./routes/services.js";
 import { releasesRouter } from "./routes/releases.js";
 
 const app = express();
-const PORT = Number(process.env.PORT ?? 3001);
+const PORT = Number(process.env.PORT ?? 3003);
 
 app.use(cors());
 app.use(express.json());
