@@ -10,6 +10,5 @@ build
 .env.local
 .claude/settings.local.json
 
-# runtime data (created automatically on first run)
-server/data/db.json
+# backups only — db.json is tracked
 server/data/*.bak

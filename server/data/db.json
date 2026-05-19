@@ -1,0 +1,206 @@
+{
+  "tasks": [
+    {
+      "id": "luPVXLUcht",
+      "taskNumber": "MOU-3398",
+      "title": "Zobrazit chybovou hlášku z BE na FE BETY1 (nevyplnění číslo smlouvy při předání na BT)",
+      "branch": "Features/Features-2019-04",
+      "status": "hotovo",
+      "script": "",
+      "releaseId": "suH53iJwqm",
+      "deployments": [
+        {
+          "serviceId": "aYoJMCYX6A",
+          "ci": "2026-05-07T11:06:33.670Z",
+          "stage": "2026-05-18T06:49:42.139Z",
+          "prod": null
+        }
+      ],
+      "createdAt": "2026-05-06T20:03:53.653Z",
+      "updatedAt": "2026-05-18T06:49:42.139Z"
+    },
+    {
+      "id": "ItfrrKP03d",
+      "taskNumber": "MOU-3393",
+      "title": "Přidání filtru v MDP na segment",
+      "branch": "master",
+      "status": "hotovo",
+      "script": "",
+      "releaseId": "suH53iJwqm",
+      "deployments": [
+        {
+          "serviceId": "NrNoJed_hb",
+          "ci": "2026-05-07T08:43:50.279Z",
+          "stage": "2026-05-18T06:49:26.276Z",
+          "prod": null
+        },
+        {
+          "serviceId": "qUYh1ip3E2",
+          "ci": "2026-05-07T08:43:50.287Z",
+          "stage": "2026-05-18T06:49:26.284Z",
+          "prod": null
+        }
+      ],
+      "createdAt": "2026-05-06T20:03:53.653Z",
+      "updatedAt": "2026-05-18T06:49:26.284Z"
+    },
+    {
+      "id": "rmACseLaoV",
+      "taskNumber": "MOU-3403",
+      "title": "Frontování převodů pro službu API CSQ - partner vs role",
+      "branch": "release_20260521",
+      "status": "hotovo",
+      "script": "",
+      "releaseId": "suH53iJwqm",
+      "deployments": [
+        {
+          "serviceId": "ylg-xDAJbR",
+          "ci": "2026-05-07T08:45:23.862Z",
+          "stage": "2026-05-18T06:50:39.032Z",
+          "prod": null
+        }
+      ],
+      "createdAt": "2026-05-07T07:10:34.269Z",
+      "updatedAt": "2026-05-18T06:50:39.032Z"
+    },
+    {
+      "id": "pnJl6w5gta",
+      "taskNumber": "OFU-38",
+      "title": "BE Dělení provize - dostupné až po odeslání ZZJ (BE část)",
+      "branch": "release_20260521",
+      "status": "hotovo",
+      "script": "",
+      "releaseId": "suH53iJwqm",
+      "deployments": [
+        {
+          "serviceId": "ylg-xDAJbR",
+          "ci": "2026-05-07T08:46:24.094Z",
+          "stage": "2026-05-18T06:51:00.504Z",
+          "prod": null
+        },
+        {
+          "serviceId": "qUYh1ip3E2",
+          "ci": "2026-05-11T13:09:06.949Z",
+          "stage": "2026-05-18T06:51:00.513Z",
+          "prod": null
+        }
+      ],
+      "createdAt": "2026-05-07T08:46:11.939Z",
+      "updatedAt": "2026-05-18T06:51:00.513Z"
+    },
+    {
+      "id": "foipv-nFpZ",
+      "taskNumber": "MOU-3408",
+      "title": "MongoDB - projít Mongo na CI/Stage/ PROD a pročistit jej od backup a testovacích kolekcí",
+      "branch": "",
+      "status": "hotovo",
+      "script": "Duplicita\n// Aggregation pipeline to find duplicate records based on ContractVersionId\nconst pipeline = [\n  {\n    $group: {\n      _id: \"$ContractVersionId\",\n      count: { $sum: 1 },\n      ids: { $push: \"$_id\" }\n    }\n  },\n  {\n    $match: {\n      count: { $gt: 1 }\n    }\n  }\n];\n\n// Execute the aggregation\nconst duplicates = db[\"contracts-insurances-synchronization-projection\"].aggregate(pipeline);\n\n// Print the results\nduplicates.forEach((duplicate) => {\n  print(`ContractVersionId: ${duplicate._id}, Duplicate Count: ${duplicate.count}, Document IDs: ${duplicate.ids}`);\n});",
+      "releaseId": "suH53iJwqm",
+      "deployments": [],
+      "createdAt": "2026-05-14T09:48:38.070Z",
+      "updatedAt": "2026-05-18T06:50:00.172Z"
+    },
+    {
+      "id": "2rsj8EmQ7n",
+      "taskNumber": "MO-6118",
+      "title": "BOPO - N8N: JSON kontrakt & posílání pouze ŽP",
+      "branch": "",
+      "status": "hotovo",
+      "script": "",
+      "releaseId": "suH53iJwqm",
+      "deployments": [
+        {
+          "serviceId": "w1VBi2mjvd",
+          "ci": "2026-05-14T12:36:44.399Z",
+          "stage": "2026-05-18T06:49:51.050Z",
+          "prod": null
+        }
+      ],
+      "createdAt": "2026-05-14T12:34:24.367Z",
+      "updatedAt": "2026-05-18T06:50:22.486Z"
+    },
+    {
+      "id": "4DXY1EYMQT",
+      "taskNumber": "MOU-3413",
+      "title": "[NGINE] Posun dne kvůli časovému pásmu",
+      "branch": "",
+      "status": "v_reseni",
+      "script": "",
+      "releaseId": "suH53iJwqm",
+      "deployments": [
+        {
+          "serviceId": "ylg-xDAJbR",
+          "ci": "2026-05-18T13:16:42.834Z",
+          "stage": "2026-05-18T13:16:42.848Z",
+          "prod": null
+        }
+      ],
+      "createdAt": "2026-05-18T13:16:29.833Z",
+      "updatedAt": "2026-05-18T13:16:42.848Z"
+    }
+  ],
+  "services": [
+    {
+      "id": "ylg-xDAJbR",
+      "name": "BT.BusinessContracts",
+      "repo": "https://dev.azure.com/brokertrust/BT.Contracts/_build?definitionId=1273",
+      "createdAt": "2026-05-06T09:50:57.408Z"
+    },
+    {
+      "id": "5qVBkz-Hzg",
+      "name": "BT.BackOfficeApp.FrontEnd",
+      "createdAt": "2026-05-06T09:50:57.529Z",
+      "repo": "https://dev.azure.com/brokertrust/BT.Contracts/_build?definitionId=1274"
+    },
+    {
+      "id": "aYoJMCYX6A",
+      "name": "BT.BeTy.AngularApp",
+      "repo": "https://dev.azure.com/brokertrust/BT.BeTy/_build?definitionId=378",
+      "createdAt": "2026-05-06T19:14:23.586Z"
+    },
+    {
+      "id": "EGtPyxgjOy",
+      "name": "BT.Generic.API",
+      "repo": "https://dev.azure.com/brokertrust/BT.Services/_build?definitionId=1323",
+      "createdAt": "2026-05-06T19:15:14.167Z"
+    },
+    {
+      "id": "dFWvz7vaPz",
+      "name": "BT.BackOffice.App",
+      "repo": "https://dev.azure.com/brokertrust/BT.Contracts/_build?definitionId=1268",
+      "createdAt": "2026-05-06T19:25:13.299Z"
+    },
+    {
+      "id": "xMJsHsjAbx",
+      "name": "BT.Shared.ExternalServices",
+      "repo": "https://dev.azure.com/brokertrust/BT.Services/_build?definitionId=991",
+      "createdAt": "2026-05-06T19:27:05.981Z"
+    },
+    {
+      "id": "NrNoJed_hb",
+      "name": "BT.CommissionSplitAdministrationApp.FrontEnd",
+      "repo": "https://dev.azure.com/brokertrust/BT.Contracts/_build?definitionId=1403",
+      "createdAt": "2026-05-07T08:38:49.799Z"
+    },
+    {
+      "id": "qUYh1ip3E2",
+      "name": "BT.CommissionSplit",
+      "repo": "https://dev.azure.com/brokertrust/BT.Contracts/_build?definitionId=1200",
+      "createdAt": "2026-05-07T08:39:08.817Z"
+    },
+    {
+      "id": "w1VBi2mjvd",
+      "name": "BT.Bopo",
+      "repo": "https://dev.azure.com/brokertrust/BT.Bopo/_release?_a=releases&view=mine&definitionId=4",
+      "createdAt": "2026-05-14T12:36:22.323Z"
+    }
+  ],
+  "releases": [
+    {
+      "id": "suH53iJwqm",
+      "name": "Release 21.05.2026",
+      "releaseDate": "2026-05-21T00:00:00.000Z",
+      "createdAt": "2026-05-06T11:04:28.689Z"
+    }
+  ]
+}
