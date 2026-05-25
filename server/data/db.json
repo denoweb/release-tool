@@ -13,11 +13,11 @@
           "serviceId": "aYoJMCYX6A",
           "ci": "2026-05-07T11:06:33.670Z",
           "stage": "2026-05-18T06:49:42.139Z",
-          "prod": null
+          "prod": "2026-05-21T18:10:19.789Z"
         }
       ],
       "createdAt": "2026-05-06T20:03:53.653Z",
-      "updatedAt": "2026-05-18T06:49:42.139Z"
+      "updatedAt": "2026-05-21T18:10:19.789Z"
     },
     {
       "id": "ItfrrKP03d",
@@ -32,17 +32,17 @@
           "serviceId": "NrNoJed_hb",
           "ci": "2026-05-07T08:43:50.279Z",
           "stage": "2026-05-18T06:49:26.276Z",
-          "prod": null
+          "prod": "2026-05-21T18:10:25.941Z"
         },
         {
           "serviceId": "qUYh1ip3E2",
           "ci": "2026-05-07T08:43:50.287Z",
           "stage": "2026-05-18T06:49:26.284Z",
-          "prod": null
+          "prod": "2026-05-21T18:10:25.951Z"
         }
       ],
       "createdAt": "2026-05-06T20:03:53.653Z",
-      "updatedAt": "2026-05-18T06:49:26.284Z"
+      "updatedAt": "2026-05-21T18:10:25.951Z"
     },
     {
       "id": "rmACseLaoV",
@@ -57,11 +57,11 @@
           "serviceId": "ylg-xDAJbR",
           "ci": "2026-05-07T08:45:23.862Z",
           "stage": "2026-05-18T06:50:39.032Z",
-          "prod": null
+          "prod": "2026-05-21T18:10:06.901Z"
         }
       ],
       "createdAt": "2026-05-07T07:10:34.269Z",
-      "updatedAt": "2026-05-18T06:50:39.032Z"
+      "updatedAt": "2026-05-21T18:10:06.901Z"
     },
     {
       "id": "pnJl6w5gta",
@@ -76,17 +76,17 @@
           "serviceId": "ylg-xDAJbR",
           "ci": "2026-05-07T08:46:24.094Z",
           "stage": "2026-05-18T06:51:00.504Z",
-          "prod": null
+          "prod": "2026-05-21T18:10:02.832Z"
         },
         {
           "serviceId": "qUYh1ip3E2",
           "ci": "2026-05-11T13:09:06.949Z",
           "stage": "2026-05-18T06:51:00.513Z",
-          "prod": null
+          "prod": "2026-05-21T18:10:02.842Z"
         }
       ],
       "createdAt": "2026-05-07T08:46:11.939Z",
-      "updatedAt": "2026-05-18T06:51:00.513Z"
+      "updatedAt": "2026-05-21T18:10:02.842Z"
     },
     {
       "id": "foipv-nFpZ",
@@ -113,18 +113,18 @@
           "serviceId": "w1VBi2mjvd",
           "ci": "2026-05-14T12:36:44.399Z",
           "stage": "2026-05-18T06:49:51.050Z",
-          "prod": null
+          "prod": "2026-05-21T18:10:10.669Z"
         }
       ],
       "createdAt": "2026-05-14T12:34:24.367Z",
-      "updatedAt": "2026-05-18T06:50:22.486Z"
+      "updatedAt": "2026-05-21T18:10:10.669Z"
     },
     {
       "id": "4DXY1EYMQT",
       "taskNumber": "MOU-3413",
       "title": "[NGINE] Posun dne kvůli časovému pásmu",
       "branch": "",
-      "status": "v_reseni",
+      "status": "hotovo",
       "script": "",
       "releaseId": "suH53iJwqm",
       "deployments": [
@@ -132,11 +132,47 @@
           "serviceId": "ylg-xDAJbR",
           "ci": "2026-05-18T13:16:42.834Z",
           "stage": "2026-05-18T13:16:42.848Z",
-          "prod": null
+          "prod": "2026-05-21T18:09:57.653Z"
         }
       ],
       "createdAt": "2026-05-18T13:16:29.833Z",
-      "updatedAt": "2026-05-18T13:16:42.848Z"
+      "updatedAt": "2026-05-21T18:09:57.653Z"
+    },
+    {
+      "id": "HzVhl0TwUA",
+      "taskNumber": "MOU-3424",
+      "title": "Penze Esy - chybně importovaný způsob předání smlouvy",
+      "branch": "",
+      "status": "zadano",
+      "script": "",
+      "releaseId": "n8hXfOzJAH",
+      "deployments": [],
+      "createdAt": "2026-05-21T17:53:09.968Z",
+      "updatedAt": "2026-05-21T17:53:09.968Z"
+    },
+    {
+      "id": "GFOQBR_u7D",
+      "taskNumber": "MOU-3423",
+      "title": "Penze Esy - chybně propsaná pole „Přispívá zaměstnavatel“ a „Platí zaměstnavatel“",
+      "branch": "",
+      "status": "zadano",
+      "script": "",
+      "releaseId": "n8hXfOzJAH",
+      "deployments": [],
+      "createdAt": "2026-05-21T17:53:09.968Z",
+      "updatedAt": "2026-05-21T17:53:09.968Z"
+    },
+    {
+      "id": "wkR_nMGapO",
+      "taskNumber": "MOU-3415",
+      "title": "BoApp Penze - neaktivní pole měny",
+      "branch": "",
+      "status": "zadano",
+      "script": "",
+      "releaseId": "n8hXfOzJAH",
+      "deployments": [],
+      "createdAt": "2026-05-21T17:53:09.968Z",
+      "updatedAt": "2026-05-21T17:53:09.968Z"
     }
   ],
   "services": [
@@ -201,6 +237,12 @@
       "name": "Release 21.05.2026",
       "releaseDate": "2026-05-21T00:00:00.000Z",
       "createdAt": "2026-05-06T11:04:28.689Z"
+    },
+    {
+      "id": "n8hXfOzJAH",
+      "name": "Release 04.06.2026",
+      "releaseDate": "2026-06-04T00:00:00.000Z",
+      "createdAt": "2026-05-21T17:53:01.352Z"
     }
   ]
 }
