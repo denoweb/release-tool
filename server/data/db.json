@@ -309,13 +309,13 @@
       "taskNumber": "BETY2U-433",
       "title": "Zamezit vstup do BeTy1 - 978009",
       "branch": "",
-      "status": "v_reseni",
+      "status": "hotovo",
       "script": "BEGIN TRANSACTION;\n\nUPDATE Synergy.dbo.cicntp\nSET YesNoField2 = 0\nWHERE res_id = 978009;\n\n-- Pokud je vše v pořádku:\nCOMMIT;\n\n-- Pokud ne:\n-- ROLLBACK;",
       "releaseId": "n8hXfOzJAH",
       "deployments": [],
       "createdAt": "2026-05-26T10:02:07.044Z",
-      "updatedAt": "2026-05-26T12:33:21.941Z",
-      "note": ""
+      "updatedAt": "2026-05-26T12:41:18.009Z",
+      "note": "je potřeba nastavit YesNoField2 na 0, potom bude EnablePortal = 0 v imp_CM_ContactPerson."
     },
     {
       "id": "aFxrbY771G",
