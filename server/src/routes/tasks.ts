@@ -54,6 +54,7 @@ tasksRouter.post("/", async (req, res) => {
     branch: input.branch ?? "",
     status: input.status ?? "zadano",
     script: "",
+    note: "",
     releaseId: input.releaseId ?? null,
     deployments: buildDeployments(input.serviceIds),
     createdAt: now,
@@ -85,6 +86,7 @@ tasksRouter.patch("/:id", async (req, res) => {
   if (input.branch !== undefined) task.branch = input.branch;
   if (input.status !== undefined) task.status = input.status;
   if (input.script !== undefined) task.script = input.script;
+  if (input.note !== undefined) task.note = input.note;
   if (input.releaseId !== undefined) {
     if (!releaseExists(input.releaseId)) {
       return res.status(400).json({ error: "Release neexistuje" });

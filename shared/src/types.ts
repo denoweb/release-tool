@@ -36,6 +36,7 @@ export interface Task {
   branch: string;
   status: TaskStatus;
   script: string;
+  note: string;
   releaseId: string | null;
   deployments: DeploymentState[];
   createdAt: string;
@@ -58,7 +59,7 @@ export type CreateTaskInput = Pick<Task, "title"> &
 export type UpdateTaskInput = Partial<
   Pick<
     Task,
-    "taskNumber" | "title" | "branch" | "status" | "script" | "releaseId"
+    "taskNumber" | "title" | "branch" | "status" | "script" | "note" | "releaseId"
   >
 > & {
   serviceIds?: string[];

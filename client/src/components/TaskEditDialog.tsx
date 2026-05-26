@@ -38,6 +38,7 @@ interface FormState {
   branch: string;
   status: TaskStatus;
   script: string;
+  note: string;
   releaseId: string;
   serviceIds: string[];
   deployments: Record<string, DeploymentBools>;
@@ -50,6 +51,7 @@ function initialForm(task: Task): FormState {
     branch: task.branch,
     status: task.status,
     script: task.script,
+    note: task.note ?? "",
     releaseId: task.releaseId ?? "",
     serviceIds: task.deployments.map((d) => d.serviceId),
     deployments: Object.fromEntries(
@@ -133,6 +135,7 @@ export function TaskEditDialog({
       form.branch !== task.branch ||
       form.status !== task.status ||
       form.script !== task.script ||
+      form.note !== (task.note ?? "") ||
       form.releaseId !== (task.releaseId ?? "") ||
       !setEqual(
         form.serviceIds,
@@ -198,6 +201,7 @@ export function TaskEditDialog({
         branch: form.branch,
         status: form.status,
         script: form.script,
+        note: form.note,
         releaseId: form.releaseId || null,
         serviceIds: form.serviceIds,
       });
@@ -370,15 +374,25 @@ export function TaskEditDialog({
               />
             </div>
 
+            <div className="flex flex-col gap-2">
+              <Label>Poznámka</Label>
+              <Textarea
+                rows={3}
+                value={form.note}
+                onChange={(e) => setForm({ ...form, note: e.target.value })}
+                placeholder="Volná poznámka k tasku…"
+              />
+            </div>
+
             <div className="flex flex-col gap-2 mt-2">
               {services.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
                   Žádné služby v číselníku.
                 </p>
               ) : (
-                <div className="border-2 border-border rounded-md overflow-hidden">
+                <div className="border-2 border-border rounded-md overflow-y-auto max-h-56">
                   <table className="w-full text-sm table-fixed">
-                    <thead>
+                    <thead className="sticky top-0 z-10 bg-card">
                       <tr className="border-b-2 border-border text-muted-foreground text-left">
                         <th className="px-4 py-2 font-medium">Služba</th>
                         <th className="px-4 py-2 font-medium w-20 text-center">

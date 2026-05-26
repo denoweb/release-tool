@@ -34,6 +34,10 @@ for (const task of db.data.tasks as Array<
     task.script = "";
     migrated = true;
   }
+  if (task.note === undefined) {
+    task.note = "";
+    migrated = true;
+  }
   if ("description" in task) {
     delete task.description;
     migrated = true;

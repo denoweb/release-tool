@@ -14,6 +14,7 @@ import {
   Boxes,
   Copy,
   Pencil,
+  StickyNote,
 } from "lucide-react";
 import { api } from "@/api";
 import { Button } from "@/components/ui/button";
@@ -353,6 +354,9 @@ export function TaskListPage() {
                     <th className="px-2 py-2 font-medium w-14 text-center">
                       Script
                     </th>
+                    <th className="px-2 py-2 font-medium w-14 text-center">
+                      Pozn.
+                    </th>
                     <th className="px-5 py-2 font-medium w-[104px] text-center">
                       Stav
                     </th>
@@ -402,6 +406,16 @@ export function TaskListPage() {
                         <td className="px-2 py-2 text-center">
                           {task.script.trim() ? (
                             <Check className="h-4 w-4 text-emerald-500 inline-block" />
+                          ) : (
+                            <span className="text-muted-foreground">—</span>
+                          )}
+                        </td>
+                        <td className="px-2 py-2 text-center">
+                          {task.note?.trim() ? (
+                            <StickyNote
+                              className="h-4 w-4 text-amber-500 inline-block"
+                              aria-label="Task má poznámku"
+                            />
                           ) : (
                             <span className="text-muted-foreground">—</span>
                           )}
