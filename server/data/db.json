@@ -142,25 +142,39 @@
       "id": "HzVhl0TwUA",
       "taskNumber": "MOU-3424",
       "title": "Penze Esy - chybně importovaný způsob předání smlouvy",
-      "branch": "",
-      "status": "zadano",
+      "branch": "master",
+      "status": "hotovo",
       "script": "",
       "releaseId": "n8hXfOzJAH",
-      "deployments": [],
+      "deployments": [
+        {
+          "serviceId": "ylg-xDAJbR",
+          "ci": "2026-05-25T11:53:24.240Z",
+          "stage": null,
+          "prod": null
+        }
+      ],
       "createdAt": "2026-05-21T17:53:09.968Z",
-      "updatedAt": "2026-05-21T17:53:09.968Z"
+      "updatedAt": "2026-05-25T12:53:53.612Z"
     },
     {
       "id": "GFOQBR_u7D",
       "taskNumber": "MOU-3423",
       "title": "Penze Esy - chybně propsaná pole „Přispívá zaměstnavatel“ a „Platí zaměstnavatel“",
-      "branch": "",
-      "status": "zadano",
+      "branch": "master",
+      "status": "hotovo",
       "script": "",
       "releaseId": "n8hXfOzJAH",
-      "deployments": [],
+      "deployments": [
+        {
+          "serviceId": "ylg-xDAJbR",
+          "ci": "2026-05-25T11:25:32.912Z",
+          "stage": null,
+          "prod": null
+        }
+      ],
       "createdAt": "2026-05-21T17:53:09.968Z",
-      "updatedAt": "2026-05-21T17:53:09.968Z"
+      "updatedAt": "2026-05-25T12:53:46.746Z"
     },
     {
       "id": "wkR_nMGapO",
@@ -173,6 +187,92 @@
       "deployments": [],
       "createdAt": "2026-05-21T17:53:09.968Z",
       "updatedAt": "2026-05-21T17:53:09.968Z"
+    },
+    {
+      "id": "otg_IYVjY2",
+      "taskNumber": "MOU-3417",
+      "title": "BoApp penze - starší rok sjednání ve smluvních údajích nelze změnit",
+      "branch": "release_20260604",
+      "status": "v_reseni",
+      "script": "",
+      "releaseId": "n8hXfOzJAH",
+      "deployments": [
+        {
+          "serviceId": "OfQW4tShJm",
+          "ci": "2026-05-26T06:29:59.651Z",
+          "stage": null,
+          "prod": null
+        }
+      ],
+      "createdAt": "2026-05-25T08:50:18.924Z",
+      "updatedAt": "2026-05-26T06:29:59.651Z"
+    },
+    {
+      "id": "IFlJF9Is1m",
+      "taskNumber": "MO-6119",
+      "title": "Úprava požadavků klienta na ZZJ - nepředvyplněné požadavky",
+      "branch": "master",
+      "status": "hotovo",
+      "script": "",
+      "releaseId": "n8hXfOzJAH",
+      "deployments": [
+        {
+          "serviceId": "aYoJMCYX6A",
+          "ci": "2026-05-25T08:50:57.459Z",
+          "stage": "2026-05-25T08:50:57.468Z",
+          "prod": null
+        }
+      ],
+      "createdAt": "2026-05-25T08:50:18.924Z",
+      "updatedAt": "2026-05-25T11:46:56.526Z"
+    },
+    {
+      "id": "LXTd1A8_Vj",
+      "taskNumber": "MOU-3429",
+      "title": "Propisování čísla smlouvy v bodě 8",
+      "branch": "",
+      "status": "zadano",
+      "script": "",
+      "releaseId": "n8hXfOzJAH",
+      "deployments": [],
+      "createdAt": "2026-05-25T09:56:36.199Z",
+      "updatedAt": "2026-05-25T09:56:36.199Z"
+    },
+    {
+      "id": "1AMc3Q2CWb",
+      "taskNumber": "MOU-3439",
+      "title": "BusinessCases.CORE - AddEdocumentProtocolJob ",
+      "branch": "",
+      "status": "zadano",
+      "script": "",
+      "releaseId": "n8hXfOzJAH",
+      "deployments": [],
+      "createdAt": "2026-05-25T11:08:36.513Z",
+      "updatedAt": "2026-05-25T11:08:36.513Z"
+    },
+    {
+      "id": "elDseonY6V",
+      "taskNumber": "MOU-3440",
+      "title": "V historii není vidět předání na BT",
+      "branch": "",
+      "status": "v_reseni",
+      "script": "",
+      "releaseId": "n8hXfOzJAH",
+      "deployments": [],
+      "createdAt": "2026-05-25T11:52:57.137Z",
+      "updatedAt": "2026-05-25T11:52:57.137Z"
+    },
+    {
+      "id": "cd0RPVtnPK",
+      "taskNumber": "MOU-3347",
+      "title": "Zpracování intervencí KaP",
+      "branch": "",
+      "status": "zadano",
+      "script": "",
+      "releaseId": "n8hXfOzJAH",
+      "deployments": [],
+      "createdAt": "2026-05-25T13:39:50.043Z",
+      "updatedAt": "2026-05-25T13:39:50.043Z"
     }
   ],
   "services": [
@@ -229,6 +329,12 @@
       "name": "BT.Bopo",
       "repo": "https://dev.azure.com/brokertrust/BT.Bopo/_release?_a=releases&view=mine&definitionId=4",
       "createdAt": "2026-05-14T12:36:22.323Z"
+    },
+    {
+      "id": "OfQW4tShJm",
+      "name": "bt-frontend",
+      "repo": "https://dev.azure.com/brokertrust/BT.Frontend/_build?definitionId=966",
+      "createdAt": "2026-05-25T13:39:07.019Z"
     }
   ],
   "releases": [
