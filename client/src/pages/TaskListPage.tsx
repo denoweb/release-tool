@@ -343,8 +343,8 @@ export function TaskListPage() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="text-left text-muted-foreground border-b border-border/40">
-                    <th className="px-5 py-2 font-medium w-28">Číslo</th>
-                    <th className="px-5 py-2 font-medium min-w-[320px]">
+                    <th className="px-5 py-2 font-medium w-40">Číslo</th>
+                    <th className="px-5 py-2 font-medium min-w-[480px]">
                       Název
                     </th>
                     <th className="px-5 py-2 font-medium w-32">Branch</th>

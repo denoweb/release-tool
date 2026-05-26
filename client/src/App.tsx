@@ -73,7 +73,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 export function App() {
   return (
     <div className="flex min-h-screen bg-background">
-      <aside className="w-52 shrink-0 bg-[#1F2429] flex flex-col">
+      <aside className="w-44 shrink-0 bg-[#1F2429] flex flex-col">
         <div className="h-16 px-5 flex items-center gap-2.5 border-b border-slate-800">
           <div className="h-8 w-8 rounded-full bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center shadow-md">
             <Rocket className="h-4 w-4 text-white" />
