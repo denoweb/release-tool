@@ -62,6 +62,8 @@ export function TaskListPage() {
         setTasks(t);
         setServices(s);
         setReleases(r);
+        // Při prvním načtení vyber nejnovější release (server vrací desc).
+        if (r.length > 0) setReleaseSel(r[0].id);
       })
       .finally(() => setLoading(false));
   }, []);

@@ -17,7 +17,7 @@ function isValidDate(s: string) {
 
 releasesRouter.get("/", (_req, res) => {
   const sorted = [...db.data.releases].sort((a, b) =>
-    a.releaseDate.localeCompare(b.releaseDate),
+    b.releaseDate.localeCompare(a.releaseDate),
   );
   res.json(sorted);
 });

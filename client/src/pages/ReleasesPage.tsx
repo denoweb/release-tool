@@ -35,7 +35,7 @@ export function ReleasesPage() {
       });
       setReleases((prev) =>
         [...prev, r].sort((a, b) =>
-          a.releaseDate.localeCompare(b.releaseDate),
+          b.releaseDate.localeCompare(a.releaseDate),
         ),
       );
       setName("");
@@ -72,7 +72,7 @@ export function ReleasesPage() {
       setReleases((prev) =>
         prev
           .map((r) => (r.id === id ? updated : r))
-          .sort((a, b) => a.releaseDate.localeCompare(b.releaseDate)),
+          .sort((a, b) => b.releaseDate.localeCompare(a.releaseDate)),
       );
     } catch (err) {
       setError((err as Error).message);
